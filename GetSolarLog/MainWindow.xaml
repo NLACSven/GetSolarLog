@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GetSolarLog"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Get Solar Log Data" Width="640" WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen">
+    <Grid Background="WhiteSmoke">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.ColumnSpan="3" Click="Button_Click" Margin="10">
+            <TextBlock Text="Get Solar Log Data" FontSize="16" Margin="3"/>
+        </Button>
     </Grid>
 </Window>

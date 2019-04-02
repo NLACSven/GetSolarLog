@@ -24,5 +24,10 @@ namespace GetSolarLog
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Test der Funktionalität...", "Test", MessageBoxButton.OK);
+        }
     }
 }
