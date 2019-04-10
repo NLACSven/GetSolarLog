@@ -12,12 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.J;
 
 namespace GetSolarLog
 {
-    /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -25,9 +25,20 @@ namespace GetSolarLog
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Test der Funktionalität...", "Test", MessageBoxButton.OK);
+            string resourceAddress = "http://192.168.1.43/getjp";
+            string jsonPost = "{\"801\":{\"170\":null}}";
+
+            using (var client = new HttpClient())
+            {
+                var content = new StringContent(jsonPost, Encoding.UTF8,"application/json");
+                var response = await client.PostAsync(resourceAddress, content).ConfigureAwait(true);
+                string resp = await response.Content.ReadAsStringAsync().ConfigureAwait(true);
+
+                Json
+                ResponseTextBox.Text = resp;
+            }
         }
     }
 }
